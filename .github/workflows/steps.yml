@@ -1,10 +1,10 @@
 name: Our Steps
 on: push
 jobs:
-  ignore:
+  notify:
     runs-on: ubuntu-latest
     steps:
-      - id: flaky
-        continue-on-error: true
-        run: exit 1
-      - run: echo "I don't care!"
+      - id: random
+        run: exit $(($RANDOM % 2 == 0))
+      - if: always()
+        run: echo ${{ steps.random.outcome }}
