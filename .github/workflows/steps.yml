@@ -1,12 +1,10 @@
 name: Our Steps
 on: push
 jobs:
-  zeroone:
+  ignore:
     runs-on: ubuntu-latest
     steps:
-      - id: gen-num
-        run: echo "num=$(($RANDOM % 2))" >> "$GITHUB_OUTPUT"
-      - if: steps.gen-num.outputs.num == 0
-        run: echo zero
-      - if: steps.gen-num.outputs.num == 1
-        run: echo one
+      - id: flaky
+        continue-on-error: true
+        run: exit 1
+      - run: echo "I don't care!"
