@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: original
-        run: exit 1
+        run: exit 0
       - name: backup
         if: failure()
         run: echo backup
